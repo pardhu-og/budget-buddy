@@ -13,7 +13,7 @@ const[animatekey, setAnimateKey] =useState(0)
     })
 
    function handleChange(e){
-        setUserInput(p=>({...p,[e.target.name]:e.target.value}))
+     e.target.name === "type" ? setUserInput(p=>({...p,[e.target.name]:e.target.value, tag:""})): setUserInput(p=>({...p,[e.target.name]:e.target.value}))
     }
    
     function handleSubmit(e){
@@ -63,8 +63,8 @@ const[animatekey, setAnimateKey] =useState(0)
                
                <div className="flex justify-evenly">
                  <label htmlFor="tag">Tag</label>
-                 <select name="tag" id="tag" onChange={handleChange} >
-                   <option value="" defaultChecked >Choose a tag</option>
+                 <select name="tag" id="tag" value={userInput.tag} onChange={handleChange} >
+                   <option value="" >Choose a tag</option>
                    {userInput.type === "expenditure" && 
                    ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
                    {userInput.type === "income" && 
