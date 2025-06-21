@@ -5,6 +5,7 @@ const {data, setData} = useData();
 const[animatekey, setAnimateKey] =useState(0)
  const [userInput, setUserInput] = useState({
         Id:1,
+        date:new Date().toISOString().split("T")[0],
         type:"",
         amount:"",
         tag:"",
@@ -24,6 +25,7 @@ const[animatekey, setAnimateKey] =useState(0)
             setData(p=>[...p, newEntry]);
             setUserInput(p=>({
                  Id:1,
+                 date:new Date().toISOString().split("T")[0],
                  type:"",
                  amount:"",
                  tag:"",
@@ -34,10 +36,16 @@ const[animatekey, setAnimateKey] =useState(0)
         }
     }
 
+    
+
     return (
 
         <div className="w-md">
             <form onSubmit={handleSubmit} className="flex flex-col">
+              <div>
+                <label htmlFor="date">Date:</label>
+                <input type="date" id="date" name="date" value={userInput.date} onChange={handleChange}/>
+              </div>
             <div className="flex justify-evenly">
                 <div>
                 <input type="radio" name="type" value="income" id="income" checked={userInput.type === "income"} onChange={handleChange} className="peer hidden"/>
