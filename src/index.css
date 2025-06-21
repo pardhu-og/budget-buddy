@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --animate-fadeinout: fadeinout 3s ease forwards;
+
+    @keyframes fadeinout { 
+        0%,100% {opacity: 0;}
+        25%, 75% {opacity: 1;}
+        
+    }
+}

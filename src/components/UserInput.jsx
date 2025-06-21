@@ -1,7 +1,8 @@
 import { useState } from "react"
-
+import { useData} from '../contexts/DataContext'
 export default function UserInput () {
-const [data, setData] = useState([])
+const {data, setData} = useData();
+const[animatekey, setAnimateKey] =useState(0)
  const [userInput, setUserInput] = useState({
         Id:1,
         type:"",
@@ -28,6 +29,7 @@ const [data, setData] = useState([])
                  tag:"",
                  note:""
             }))
+            setAnimateKey(animatekey +1)
             
         }
     }
@@ -56,7 +58,7 @@ const [data, setData] = useState([])
                  <select name="tag" id="tag" onChange={handleChange} >
                    <option value="" defaultChecked >Choose a tag</option>
                    {userInput.type === "expenditure" && 
-                   ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p}>{p}</option>)}
+                   ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
                    {userInput.type === "income" && 
                    ["salary", "interest", "rental income"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
                  </select>
@@ -65,6 +67,7 @@ const [data, setData] = useState([])
                <textarea name="note" placeholder="Note" onChange={handleChange} value={userInput.note}></textarea>
                <button type="submit">Submit</button>
             </form>
+            <p key={animatekey} className={`text-blue-600 font-bold opacity-0 ${animatekey!==0 ? "animate-fadeinout":""} `}>Account Updated</p>
         </div>
     )
 }

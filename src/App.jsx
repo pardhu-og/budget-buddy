@@ -1,12 +1,16 @@
 
-import UserInput from "./assets/components/UserInput"
-
+import UserInput from "./components/UserInput"
+import Display from "./pages/Display"
 function App() {
 
 
   return (
     
-      <div><UserInput/></div>
+      <div>
+        <UserInput/>
+        <Display/>
+        
+        </div>
     
   )
 }
