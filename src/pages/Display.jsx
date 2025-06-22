@@ -1,10 +1,13 @@
 //Display.jsx
 import { useData } from "../contexts/DataContext"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "../components/Form";
+import Filter from "../components/Filter";
 
 export default function Display (){
 const {data, setData} =useData();
+const [filteredData, setFiltereddata] = useState(data)
+const [filteredTotal, setFilteredTotal] =useState(0)
 const income = data.filter(p=>p.type === "income")
               .reduce((acc,cur)=>{
                 acc = acc + Number(cur.amount);
@@ -38,10 +41,24 @@ function handleEditSubmit(e){
     setEditData(null)
     
 }
+
+useEffect(()=>{
+        const tempdataincome = filteredData.filter(p=> p.type === "income").reduce((acc,cur)=>{
+                acc = acc + Number(cur.amount);
+                return acc
+              },0);
+        const tempdataexpenditure = filteredData.filter(p=> p.type === "expenditure").reduce((acc,cur)=>{
+                acc = acc + Number(cur.amount);
+                return acc
+              },0);
+        setFilteredTotal(tempdataincome - tempdataexpenditure)
+        console.log(filteredTotal)
+},[filteredData])
     return (
         <div >
             <p>Income is {income} and total expenditure is {expenditure} total balance is {balance}</p>
             {console.log(data)}
+            <Filter dataTobeFiltered={data} filteredDatastate={setFiltereddata} />
             <div >
                 <table >
             <thead >
@@ -56,7 +73,7 @@ function handleEditSubmit(e){
                 </tr>
             </thead>
             <tbody>
-                {data.map((p,i)=>(
+                {filteredData.map((p,i)=>(
                     <tr key={p.Id}>
                         <td>{i+1}</td>
                         <td>{p.date}</td>
@@ -69,7 +86,8 @@ function handleEditSubmit(e){
                 ))}
                 <tr>
                     <td>Total</td>
-                    <td>Pardhu add totaling function</td>
+                    <td>.</td> 
+                    <td className={`${filteredTotal < 0? "text-red-400":""}`}>{filteredTotal}</td>
                 </tr>
             </tbody>
         </table>

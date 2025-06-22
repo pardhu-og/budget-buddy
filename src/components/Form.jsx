@@ -33,9 +33,9 @@ export default function Form ({submitFunction, inpvalidationState, setInpValidat
                  <select name="tag" id="tag" value={inpvalidationState.tag} onChange={handleChange} >
                    <option value="" >Choose a tag</option>
                    {inpvalidationState.type === "expenditure" && 
-                   ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
+                   ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p} value={p}>{p.toUpperCase()}</option>)}
                    {inpvalidationState.type === "income" && 
-                   ["salary", "interest", "rental income"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
+                   ["salary", "interest", "rental income"].map(p=><option key={p} value={p}>{p.toUpperCase()}</option>)}
                  </select>
                </div>
 
