@@ -1,5 +1,7 @@
+//UserInput.jsx
 import { useState } from "react"
 import { useData} from '../contexts/DataContext'
+import Form from "./Form";
 export default function UserInput () {
 const {data, setData} = useData();
 const[animatekey, setAnimateKey] =useState(0)
@@ -12,9 +14,7 @@ const[animatekey, setAnimateKey] =useState(0)
         note:""
     })
 
-   function handleChange(e){
-     e.target.name === "type" ? setUserInput(p=>({...p,[e.target.name]:e.target.value, tag:""})): setUserInput(p=>({...p,[e.target.name]:e.target.value}))
-    }
+
    
     function handleSubmit(e){
         e.preventDefault();
@@ -40,41 +40,8 @@ const[animatekey, setAnimateKey] =useState(0)
 
     return (
 
-        <div className="w-md">
-            <form onSubmit={handleSubmit} className="flex flex-col">
-              <div>
-                <label htmlFor="date">Date:</label>
-                <input type="date" id="date" name="date" value={userInput.date} onChange={handleChange}/>
-              </div>
-            <div className="flex justify-evenly">
-                <div>
-                <input type="radio" name="type" value="income" id="income" checked={userInput.type === "income"} onChange={handleChange} className="peer hidden"/>
-               <label htmlFor="income" className="peer-checked:bg-red-200">Income</label>
-               </div>
-              <div>
-                 <input type="radio" id="expenditure" name="type" value="expenditure" checked={userInput.type === "expenditure"} onChange={handleChange} className="peer hidden"/>
-               <label htmlFor="expenditure" className="peer-checked:bg-red-200">Expenditure</label>
-              </div>
-            </div>
-              <div className="flex justify-evenly">
-              <label htmlFor="amount">Amount</label>
-               <input type="number" id="amount" name="amount" value={userInput.amount} onChange={handleChange}/>  
-              </div> 
-               
-               <div className="flex justify-evenly">
-                 <label htmlFor="tag">Tag</label>
-                 <select name="tag" id="tag" value={userInput.tag} onChange={handleChange} >
-                   <option value="" >Choose a tag</option>
-                   {userInput.type === "expenditure" && 
-                   ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
-                   {userInput.type === "income" && 
-                   ["salary", "interest", "rental income"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
-                 </select>
-               </div>
-
-               <textarea name="note" placeholder="Note" onChange={handleChange} value={userInput.note}></textarea>
-               <button type="submit">Submit</button>
-            </form>
+        <div>
+            <Form submitFunction={handleSubmit} inpvalidationState={userInput} setInpValidationState={setUserInput} />
             <p key={animatekey} className={`text-blue-600 font-bold opacity-0 ${animatekey!==0 ? "animate-fadeinout":""} `}>Account Updated</p>
         </div>
     )

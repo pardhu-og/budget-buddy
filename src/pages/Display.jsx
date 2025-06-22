@@ -1,5 +1,7 @@
+//Display.jsx
 import { useData } from "../contexts/DataContext"
 import { useState } from "react";
+import Form from "../components/Form";
 
 export default function Display (){
 const {data, setData} =useData();
@@ -24,10 +26,7 @@ const [editdata, setEditData] =useState(null)
 function editdatafunc(p){
     setEditData(p)
 }
-function handleEditChange(e){
-        e.target.name === "type" ? setEditData(p=>({...p,[e.target.name]:e.target.value, tag:""})): setEditData(p=>({...p,[e.target.name]:e.target.value}))
-        
-    }
+
 function handleEditSubmit(e){
     e.preventDefault()
     const tempeditData = data.map(p=>{
@@ -68,6 +67,10 @@ function handleEditSubmit(e){
                         <td><button onClick={()=>(editdatafunc(p))}>Edit</button><button  onClick={()=>deleteData(p.Id)}>Delete</button></td>
                     </tr>
                 ))}
+                <tr>
+                    <td>Total</td>
+                    <td>Pardhu add totaling function</td>
+                </tr>
             </tbody>
         </table>
 
@@ -76,39 +79,7 @@ function handleEditSubmit(e){
                 {editdata !== null &&
                 <div>
                    <div>
-                     <form onSubmit={handleEditSubmit} className="flex flex-col">
-              <div>
-                <label htmlFor="date">Date:</label>
-                <input type="date" id="date" name="date" value={editdata.date} onChange={handleEditChange}/>
-              </div>
-            <div className="flex justify-evenly">
-                <div>
-                <input type="radio" name="type" value="income" id="incomeedit" checked={editdata.type === "income"} onChange={handleEditChange} className="peer hidden"/>
-               <label htmlFor="incomeedit" className="peer-checked:bg-red-200">Income</label>
-               </div>
-              <div>
-                 <input type="radio" id="expenditureedit" name="type" value="expenditure" checked={editdata.type === "expenditure"} onChange={handleEditChange} className="peer hidden"/>
-               <label htmlFor="expenditureedit" className="peer-checked:bg-red-200">Expenditure</label>
-              </div>
-            </div>
-              <div className="flex justify-evenly">
-              <label htmlFor="amount">Amount</label>
-               <input type="number" id="amount" name="amount" value={editdata.amount} onChange={handleEditChange}/>  
-              </div> 
-               
-               <div className="flex justify-evenly">
-                 <label htmlFor="tag">Tag</label>
-                 <select name="tag" id="tag" value={editdata.tag} onChange={handleEditChange} >
-                   <option value="" defaultChecked >Choose a tag</option>
-                   {editdata.type === "expenditure" && 
-                   ["food", "rent payment", "cloths", "entertainment", "investment", "health"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
-                   {editdata.type === "income" && 
-                   ["salary", "interest", "rental income"].map(p=><option key={p}>{p.toUpperCase()}</option>)}
-                 </select>
-               </div>
-               <textarea name="note" placeholder="Note" onChange={handleEditChange} value={editdata.note}></textarea>
-               <button type="submit">Submit</button>
-            </form>
+                     <Form submitFunction={handleEditSubmit} inpvalidationState={editdata} setInpValidationState={setEditData} />
                    </div>
                    <button onClick={()=>setEditData(null)}>Close </button>
                 </div>
