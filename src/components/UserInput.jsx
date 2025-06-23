@@ -2,9 +2,12 @@
 import { useState } from "react"
 import { useData} from '../contexts/DataContext'
 import Form from "./Form";
+import Summary from "./Summary";
 export default function UserInput () {
 const {data, setData} = useData();
 const[animatekey, setAnimateKey] =useState(0)
+const[notxnalert, setNoTxnalert] =useState(0)
+const[noamtalert, setNoAmountAlert] =useState(0)
  const [userInput, setUserInput] = useState({
         Id:1,
         date:new Date().toISOString().split("T")[0],
@@ -18,9 +21,11 @@ const[animatekey, setAnimateKey] =useState(0)
    
     function handleSubmit(e){
         e.preventDefault();
-        if(userInput.type === "") {console.log("set transaction type")}
-        else if(userInput.amount === ""){console.log("Enter the amount")}
-        else{
+        if(userInput.type === "") {
+            setNoTxnalert(notxnalert + 1)
+        }   else if(userInput.amount === ""){
+            setNoAmountAlert(noamtalert + 1)
+        }   else{
             const newEntry ={...userInput, Id:Date.now(),};
             setData(p=>[...p, newEntry]);
             setUserInput(p=>({
@@ -40,9 +45,13 @@ const[animatekey, setAnimateKey] =useState(0)
 
     return (
 
-        <div>
+        <div className="flex flex-col pb-2 relative">
+            <Summary incview="false" expview="false"/>
             <Form submitFunction={handleSubmit} inpvalidationState={userInput} setInpValidationState={setUserInput} />
-            <p key={animatekey} className={`text-blue-600 font-bold opacity-0 ${animatekey!==0 ? "animate-fadeinout":""} `}>Account Updated</p>
+            <p key={`cnf${animatekey}`} className={`text-blue-600 text-center font-bold opacity-0 absolute bottom-0 translate-y-[-125%] left-1/2 translate-x-[-50%] ${animatekey!==0 ? "animate-fadeinout":""} `}>Account Updated</p>
+            <p key={`alerttrx${notxnalert}`} className={`text-red-600 text-center font-bold opacity-0 absolute bottom-0 translate-y-[-125%] left-1/2 translate-x-[-50%]  ${notxnalert!==0 ? "animate-fadeinout":""} `}> Select Transaction Type</p>
+            <p key={`alertamt${noamtalert}`} className={`text-red-600 text-center font-bold opacity-0 absolute bottom-0 translate-y-[-125%] left-1/2 translate-x-[-50%]  ${noamtalert!==0 ? "animate-fadeinout":""} `}> Enter Amount</p>
+
         </div>
     )
 }
