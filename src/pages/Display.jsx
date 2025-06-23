@@ -52,12 +52,10 @@ useEffect(()=>{
                 return acc
               },0);
         setFilteredTotal(tempdataincome - tempdataexpenditure)
-        console.log(filteredTotal)
 },[filteredData])
     return (
         <div >
             <p>Income is {income} and total expenditure is {expenditure} total balance is {balance}</p>
-            {console.log(data)}
             <Filter dataTobeFiltered={data} filteredDatastate={setFiltereddata} />
             <div >
                 <table >
@@ -91,8 +89,6 @@ useEffect(()=>{
                 </tr>
             </tbody>
         </table>
-
-                {console.log(editdata)}
 
                 {editdata !== null &&
                 <div>
