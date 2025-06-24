@@ -7,6 +7,14 @@
         0%,100% {opacity: 0;}
         1% {display: block;}
         25%, 75% {opacity: 1;}
-        
+    }
+
+    --animate-slidein: slidein 5s 200ms ease none;
+
+    @keyframes slidein {
+        0% {opacity:0; transform:translateY(-100%)}
+        50% {opacity:1; transform:translateY(200%)}
+        80% {opacity:1; transform:translateY(200%)}
+        100%{opacity:0; transform:translateY(200%)}
     }
 }

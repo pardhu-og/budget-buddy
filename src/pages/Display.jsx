@@ -11,7 +11,9 @@ import { SquareX } from 'lucide-react';
 export default function Display (){
 const {data, setData} =useData();
 const [filteredData, setFiltereddata] = useState(data)
-const [filteredTotal, setFilteredTotal] =useState(0)
+const [filteredTotal, setFilteredTotal] = useState(0)
+const [noamtalert, setNoAmountAlert] = useState(0)
+const [edtsucc, setEditsuc] = useState(0)
 
 function deleteData (id){
 const dataAftDel = data.filter(p=>p.Id !== id)
@@ -20,18 +22,26 @@ setData(dataAftDel)
 
 const [editdata, setEditData] =useState(null)
 function editdatafunc(p){
+    setEditsuc(0)
     setEditData(p)
 }
 
 function handleEditSubmit(e){
     e.preventDefault()
-    const tempeditData = data.map(p=>{
+    if(editdata.amount === ""){
+            setNoAmountAlert(noamtalert + 1)
+    } else {
+        const tempeditData = data.map(p=>{
         if (p.Id === editdata.Id) {
             return editdata
         } else {return p}
     })
     setData(tempeditData)
     setEditData(null)
+    setNoAmountAlert(0)
+    setEditsuc(edtsucc+1)
+    }
+    
     
 }
 
@@ -47,58 +57,73 @@ useEffect(()=>{
         setFilteredTotal(tempdataincome - tempdataexpenditure)
 },[filteredData])
     return (
-        <div className="p-2  flex flex-col gap-4">
+        <div className="p- flex flex-col gap-4
+                        md:gap-6">
             <Summary/>
             <Filter dataTobeFiltered={data} filteredDatastate={setFiltereddata} />
             <div className="overflow-x-auto overflow-y-auto h-screen rounded">
-            <table className="min-w-full relative">
-                <caption className="text-center text-2xl font-semibold mb-2 text-left pl-2">Transactions</caption>
+            <table className="min-w-full text-sm
+                              md:text-base
+                              lg:text-lg">
+                <caption className=" text-base font-semibold mb-2 text-left pl-2
+                                    md:text-lg md:text-center md:mb-3
+                                    lg:text-2xl ">Transactions</caption>
             <thead className="bg-gray-700 text-white sticky top-0">
-                <tr className="[&>th]:p-6">
+                <tr className="[&>th]:p-1 md:[&>th]:p-2">
                     <th>S.no</th>
-                    <th className="!p-8">Date</th>
+                    <th className="!px-8 md:!px-10">Date</th>
                     <th>Type of transaction</th>
                     <th>Tags</th>
-                    <th className="!p-16">Notes</th>
+                    <th className="!px-16 md:!px-18">Notes</th>
                     <th>Amount</th>
                     <th>Edit / Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {filteredData.map((p,i)=>(
-                    <tr key={p.Id} className="[&>td]:p-2 odd:bg-white even:bg-gray-300">
+                    <tr key={p.Id} className="[&>td]:p-1 md:[&>td]:p-2 odd:bg-white even:bg-gray-300">
                         <td className="text-center">{i+1}</td>
-                        <td className="" >{p.date}</td>
+                        <td className="text-center" >{p.date}</td>
                         <td className="text-center">{p.type.toUpperCase()}</td>
                         <td className="text-center">{p.tag.toUpperCase()}</td>
                         <td>{p.note}</td>
                         <td className= {`font-semibold text-right ${p.type === "income"? "text-green-500":"text-red-500"}`}>{`${p.amount}`}</td>
-                        <td className="flex justify-evenly"><button onClick={()=>(editdatafunc(p))} title="Edit"><Pencil/></button>
-                        <button  onClick={()=>deleteData(p.Id)} title="Delete"><Trash2 /></button></td>
+                        <td className="flex justify-around gap-2 md:gap-3">
+                          <button onClick={()=>(editdatafunc(p))} title="Edit"><Pencil className="w-3.5 h-3.5 md:w-6 md:h-6 stroke-blue-700 hover:cursor-pointer hover:fill-blue-700 hover:scale-120"/></button>
+                          <button  onClick={()=>deleteData(p.Id)} title="Delete"><Trash2 className="w-3.5 h-3.5 md:w-6 md:h-6 stroke-red-700 hover:cursor-pointer hover:fill-red-700 hover:scale-120"/></button>
+                        </td>
                     </tr>
                 ))}
                 </tbody>
-                <tfoot>
-                <tr>
-                    <td colSpan={5} className="text-right text-xl font-semibold px-8 py-4">Total</td>
-                    <td className={`font-bold text-xl text-right ${filteredTotal < 0? "text-red-400":"text-green-500"}`}>{filteredTotal}</td>
+                <tfoot >
+                <tr className="bg-gray-700">
+                    <td colSpan={5} className="text-right text-sm text-gray-200 md:text-base lg:text-lg font-semibold px-2 py-1">TOTAL:</td>
+                    <td colSpan={3} className={`font-bold text-base text-center md:text-lg lg:text-xl ${filteredTotal < 0? "text-red-400":"text-green-500"}`}>{filteredTotal>0?filteredTotal:0-filteredTotal}</td>
                 </tr>
             </tfoot>
         </table>
     </div>
          {editdata !== null &&
-            <div className="fixed w-screen h-screen bg-white top-0 left-0 flex flex col items-center justify-center">
+            <div className="fixed w-screen h-screen bg-white top-0 left-0 flex flex col items-center justify-center ">
                 <div className="relative bg-white">
                     <div>
                         <Form submitFunction={handleEditSubmit} inpvalidationState={editdata} setInpValidationState={setEditData} />
                     </div>
                     <div>
-                    <button onClick={()=>setEditData(null)} className="absolute top-6 right-6 rounded"> <SquareX /> </button>
+                    <button onClick={()=>{
+                        setEditData(null)
+                        setNoAmountAlert(0)
+                    }} className="absolute top-2 right-3 md:top-6 rounded"> <SquareX className="text-gray-400 md:w-6 md:h-6 "/> </button>
                     </div>
+                    <p key={`alertamt${noamtalert}`} className={`text-red-600 text-sm md:text-base lg:text-lg text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] md:translate-y-[150%] left-1/2 translate-x-[-50%]  ${noamtalert!==0 ? "animate-fadeinout":""} 
+                                                                 `}> Enter Amount</p>
                 </div>
             </div>
              }
-
+            <div className={`fixed top-0 left-1/2 translate-x-[-50%] translate-y-[-100%] w-40 h-10 md:h-15 bg-gray-200 flex justify-center items-center border rounded-xl text-green-700 text-sm md:text-base lg:text-lg font-bold opacity-0  ${edtsucc !== 0?"animate-slidein":""}
+                            `} >
+                <p className="">Edit Successfull!</p>
+            </div>
         </div>
     )
 }

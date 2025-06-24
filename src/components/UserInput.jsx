@@ -48,9 +48,16 @@ const[noamtalert, setNoAmountAlert] =useState(0)
         <div className="flex flex-col pb-2 relative">
             <Summary incview="false" expview="false"/>
             <Form submitFunction={handleSubmit} inpvalidationState={userInput} setInpValidationState={setUserInput} />
-            <p key={`cnf${animatekey}`} className={`text-blue-600 text-center font-bold opacity-0 absolute bottom-0 translate-y-[-125%] left-1/2 translate-x-[-50%] ${animatekey!==0 ? "animate-fadeinout":""} `}>Account Updated</p>
-            <p key={`alerttrx${notxnalert}`} className={`text-red-600 text-center font-bold opacity-0 absolute bottom-0 translate-y-[-125%] left-1/2 translate-x-[-50%]  ${notxnalert!==0 ? "animate-fadeinout":""} `}> Select Transaction Type</p>
-            <p key={`alertamt${noamtalert}`} className={`text-red-600 text-center font-bold opacity-0 absolute bottom-0 translate-y-[-125%] left-1/2 translate-x-[-50%]  ${noamtalert!==0 ? "animate-fadeinout":""} `}> Enter Amount</p>
+            
+            <p key={`cnf${animatekey}`} className={`text-blue-600 text-base text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] left-1/2 translate-x-[-50%] ${animatekey!==0 ? "animate-fadeinout":""} 
+                                                    md:text-lg
+                                                    lg:text-xl lg:translate-y-[-75%]`}>Account Updated</p>
+            <p key={`alerttrx${notxnalert}`} className={`text-red-600 text-base text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] left-1/2 translate-x-[-50%]  ${notxnalert!==0 ? "animate-fadeinout":""} 
+                                                        md:text-lg
+                                                        lg:text-xl lg:translate-y-[-75%]`}> Select Transaction Type</p>
+            <p key={`alertamt${noamtalert}`} className={`text-red-600 text-base text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] left-1/2 translate-x-[-50%]  ${noamtalert!==0 ? "animate-fadeinout":""} 
+                                                        md:text-lg
+                                                        lg:text-xl lg:translate-y-[-75%]`}> Enter Amount</p>
 
         </div>
     )
