@@ -16,8 +16,10 @@ const [noamtalert, setNoAmountAlert] = useState(0)
 const [edtsucc, setEditsuc] = useState(0)
 
 function deleteData (id){
-const dataAftDel = data.filter(p=>p.Id !== id)
-setData(dataAftDel)
+    if(confirm("Do you want to delete the entry")){
+        const dataAftDel = data.filter(p=>p.Id !== id)
+        setData(dataAftDel)
+    }
 }
 
 const [editdata, setEditData] =useState(null)
@@ -62,14 +64,14 @@ useEffect(()=>{
             <Summary/>
             <Filter dataTobeFiltered={data} filteredDatastate={setFiltereddata} />
             <div className="overflow-x-auto overflow-y-auto h-screen rounded">
-            <table className="min-w-full text-sm
+            <table className="min-w-full text-sm border-separate 
                               md:text-base
                               lg:text-lg">
-                <caption className=" text-base font-semibold mb-2 text-left pl-2
+                <caption className="text-base font-semibold mb-2 text-left pl-2
                                     md:text-lg md:text-center md:mb-3
                                     lg:text-2xl ">Transactions</caption>
             <thead className="bg-gray-700 text-white sticky top-0">
-                <tr className="[&>th]:p-1 md:[&>th]:p-2">
+                <tr className="[&>th]:p-1 md:[&>th]:p-2 ">
                     <th>S.no</th>
                     <th className="!px-8 md:!px-10">Date</th>
                     <th>Type of transaction</th>
@@ -88,7 +90,7 @@ useEffect(()=>{
                         <td className="text-center">{p.tag.toUpperCase()}</td>
                         <td>{p.note}</td>
                         <td className= {`font-semibold text-right ${p.type === "income"? "text-green-500":"text-red-500"}`}>{`${p.amount}`}</td>
-                        <td className="flex justify-around gap-2 md:gap-3">
+                        <td className="flex justify-center gap-2 md:gap-3 lg:gap-8">
                           <button onClick={()=>(editdatafunc(p))} title="Edit"><Pencil className="w-3.5 h-3.5 md:w-6 md:h-6 stroke-blue-700 hover:cursor-pointer hover:fill-blue-700 hover:scale-120"/></button>
                           <button  onClick={()=>deleteData(p.Id)} title="Delete"><Trash2 className="w-3.5 h-3.5 md:w-6 md:h-6 stroke-red-700 hover:cursor-pointer hover:fill-red-700 hover:scale-120"/></button>
                         </td>
@@ -104,18 +106,18 @@ useEffect(()=>{
         </table>
     </div>
          {editdata !== null &&
-            <div className="fixed w-screen h-screen bg-white top-0 left-0 flex flex col items-center justify-center ">
-                <div className="relative bg-white">
+            <div className="fixed w-screen h-screen bg-gray-200 top-0 left-0 flex flex col items-center justify-center ">
+                <div className="relative ">
                     <div>
-                        <Form submitFunction={handleEditSubmit} inpvalidationState={editdata} setInpValidationState={setEditData} />
+                        <Form submitFunction={handleEditSubmit} inpvalidationState={editdata} setInpValidationState={setEditData} Title={"Edit Transaction"} />
                     </div>
                     <div>
                     <button onClick={()=>{
                         setEditData(null)
                         setNoAmountAlert(0)
-                    }} className="absolute top-2 right-3 md:top-6 rounded"> <SquareX className="text-gray-400 md:w-6 md:h-6 "/> </button>
+                    }} className="absolute top-2 right-3 md:top-6 rounded"> <SquareX className="text-gray-700 md:w-6 md:h-6 hover:text-gray-700 hover:cursor-pointer hover:scale-105"/> </button>
                     </div>
-                    <p key={`alertamt${noamtalert}`} className={`text-red-600 text-sm md:text-base lg:text-lg text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] md:translate-y-[150%] left-1/2 translate-x-[-50%]  ${noamtalert!==0 ? "animate-fadeinout":""} 
+                    <p key={`alertamt${noamtalert}`} className={`text-red-600 text-sm md:text-base lg:text-lg text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] md:translate-y-[150%] lg:translate-y-[-60%] left-1/2 translate-x-[-50%]  ${noamtalert!==0 ? "animate-fadeinout":""} 
                                                                  `}> Enter Amount</p>
                 </div>
             </div>

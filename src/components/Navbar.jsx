@@ -9,6 +9,7 @@ export default function Navbar(){
                             lg:text-lg lg:p-4 lg:gap-20">
             <Link to="/" className="hover:underline hover:scale-120 active:text-gray-300">Home</Link> 
             <Link to="/summary" className="hover:underline  hover:scale-120 active:text-gray-300">Summary</Link>
+            <Link to="/about" className="hover:underline  hover:scale-120 active:text-gray-300">About</Link>
             </div>
         </nav>
     );

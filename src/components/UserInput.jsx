@@ -17,7 +17,6 @@ const[noamtalert, setNoAmountAlert] =useState(0)
         note:""
     })
 
-
    
     function handleSubmit(e){
         e.preventDefault();
@@ -28,6 +27,7 @@ const[noamtalert, setNoAmountAlert] =useState(0)
         }   else{
             const newEntry ={...userInput, Id:Date.now(),};
             setData(p=>[...p, newEntry]);
+
             setUserInput(p=>({
                  Id:1,
                  date:new Date().toISOString().split("T")[0],
@@ -47,7 +47,7 @@ const[noamtalert, setNoAmountAlert] =useState(0)
 
         <div className="flex flex-col pb-2 relative">
             <Summary incview="false" expview="false"/>
-            <Form submitFunction={handleSubmit} inpvalidationState={userInput} setInpValidationState={setUserInput} />
+            <Form submitFunction={handleSubmit} inpvalidationState={userInput} setInpValidationState={setUserInput} Title={"Transaction Details"}/>
             
             <p key={`cnf${animatekey}`} className={`text-blue-600 text-base text-center font-bold opacity-0 absolute bottom-0 translate-y-[100%] left-1/2 translate-x-[-50%] ${animatekey!==0 ? "animate-fadeinout":""} 
                                                     md:text-lg

@@ -5,7 +5,7 @@ export default function Title () {
         <div className="m-1 p-2  border-b-2 border-gray-300 rounded-lg
                         md:m-8
                         ">
-        <h1 className="text-2xl text-center font-semibold font-mono italic 
+        <h1 className="text-2xl text-center  font-semibold italic 
                         md:text-3xl
                         lg:text-5xl">Budget Buddy</h1>
         <p className="text-sm text-right  italic 
