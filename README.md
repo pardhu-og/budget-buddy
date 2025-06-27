@@ -2,6 +2,8 @@
 
 A clean and responsive personal finance tracker built with React, JavaScript, and Tailwind CSS.
 
+🔗 **Live Site**: [Visit Budget Buddy](https://budget-buddy-three-tau.vercel.app/)
+
 Track your income and expenses, filter by category, and get a real-time summary — all stored in your browser using local storage.
 
 
@@ -45,7 +47,6 @@ I'm a frontend developer focused on building responsive, clean, and functional w
 
 ## Connect with Me
 
-- 🔗 [GitHub](https://github.com/pardhu-og/budget-buddy)
 - 🔗 [LinkedIn](https://www.linkedin.com/in/pardhasaradhi-alaparthi-203786371)
 - 📝 [Blog](https://dialogue-with-machine-a-coders-journey.hashnode.dev/)
 - 🌐 Portfolio: *Coming Soon*
