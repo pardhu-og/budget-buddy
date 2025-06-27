@@ -13,7 +13,7 @@ export default function About (){
                                 ">What Does This App Do</h2>
                 <p className="text-justify m-1 p-1  
                                md:m-2 md:p-2 md:text-lg
-                               lg:m-3 lg:p-3 lg:text-xl lg:leading-relaxed">Budget Buddy is a personal finance manager where you can add, edit, delete, and filter transactions — with live summary, local storage support, and mobile-friendly UI. It’s evolving to include data visualization, printable summaries, and sample data injection for demos.</p>
+                               lg:m-3 lg:p-3 lg:text-xl lg:leading-relaxed">Budget Buddy is a personal finance manager where you can add, edit, delete and filter transactions — with live summary, local storage support and mobile-friendly UI. It’s evolving to include data visualization, printable summaries and sample data injection for demos.</p>
             </section>
             <section className=" rounded-lg shadow-md p-3 md:p-4 lg:p-5">
                 <h2 className="bg-gray-600 text-white m-1 font-semibold text-center
@@ -22,10 +22,10 @@ export default function About (){
                                 ">About the Developer</h2>
                 <p className="text-justify m-1 p-1 
                                md:m-2 md:p-2 md:text-lg
-                               lg:m-3 lg:p-3 lg:text-xl lg:leading-relaxed">I'm a frontend developer who builds clean, responsive, and functional web apps. I work with <span className="font-semibold">React</span>, <span className="font-semibold">JavaScript</span>, and <span className="font-semibold">Tailwind CSS</span>. I love building responsive, usable tools that solve real problems.</p>
+                               lg:m-3 lg:p-3 lg:text-xl lg:leading-relaxed">I'm a frontend developer who builds clean, responsive, and functional web apps. I work with <span className="font-semibold">React, JavaScript and Tailwind CSS.</span> I love building responsive, usable tools that solve real problems.</p>
                 <p className="text-justify m-1 p-1 
                                md:m-2 md:p-2 md:text-lg
-                               lg:m-3 lg:p-3 lg:text-xl lg:leading-relaxed">This project is a part of my portfolio — built with a clear focus on functionality, maintainability, and real-world readiness.</p>
+                               lg:m-3 lg:p-3 lg:text-xl lg:leading-relaxed">This project is a part of my portfolio — built with a clear focus on functionality, maintainability and real-world readiness.</p>
             </section>
             <section className=" rounded-lg shadow-md p-3 md:p-4 lg:p-5">
                 <h2 className="bg-gray-600 text-white m-1 mb-2 p-1 font-semibold text-center
