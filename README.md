@@ -19,9 +19,9 @@ Track your income and expenses, filter by category, and get a real-time summary 
 
 - Fully Responsive (Mobile, Tablet, and Desktop)
 
-- Sample data injection for quick demos *(upcoming)*
+- Sample data injection for quick demos
 
-- Printable summaries and charts *(planned)*
+- Printable summaries and charts *(upcoming)*
 
 
 ## Tech Stack
