@@ -2,7 +2,7 @@
 export default function Title () {
 
     return (
-        <div className="m-1 p-2  border-b-2 border-gray-300 rounded-lg
+        <div className="m-1 p-2  border-b-2 border-gray-300 rounded-lg caret-transparent
                         md:m-8
                         ">
         <h1 className="text-2xl text-center  font-semibold italic 

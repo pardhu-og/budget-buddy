@@ -31,13 +31,13 @@ useEffect(()=>{
     return (
         <div className=" w-full">
             <h3 className="text-center text-base font-semibold bg-gray-700 text-white
-                            md:text-lg md:p-1 ">Filter</h3>
+                            md:text-lg md:p-1 caret-transparent">Filter</h3>
             <form>
                 <div className="flex flex-wrap text-sm gap-2 border border-gray-400 rounded p-2  bg-gray-200
                                 md:text-base md:justify-evenly md:gap-4 md:p-3">
                     
                 <div className="flex justify-center gap-4">
-                    <label htmlFor="type" className="md:py-1">Transaction Type</label>
+                    <label htmlFor="type" className="md:py-1 hover:cursor-pointer caret-transparent">Transaction Type</label>
                     <select name="type" id="type" value={fltdatavar.type} onChange={handleChange}
                             className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100">
                         <option value="">All</option>
@@ -46,20 +46,20 @@ useEffect(()=>{
                     </select>
                 </div>
                 <div className="flex justify-center gap-4">
-                    <label htmlFor="tag" className="md:py-1">Tag</label>
+                    <label htmlFor="tag" className="md:py-1 hover:cursor-pointer caret-transparent">Tag</label>
                     <select name="tag" id="tag" value={fltdatavar.tag} onChange={handleChange}
-                            className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100">
+                            className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100 caret-transparent">
                         {["", "food", "rent payment", "cloths", "entertainment", "investment", "health", "salary", "interest", "rental income"].map(p=><option key={p} value={p}>{p===""?"ALL":p.toUpperCase()}</option>)}   
                     </select>
                 </div>
                 <div className="flex justify-center gap-4">
-                    <label htmlFor="month" className="md:py-1">Month</label>
-                    <input type="month" name="month" id="month" value={fltdatavar.month} onChange={handleChange} className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100"/>
+                    <label htmlFor="month" className="md:py-1 hover:cursor-pointer caret-transparent">Month</label>
+                    <input type="month" name="month" id="month" value={fltdatavar.month} onChange={handleChange} className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100 caret-transparent"/>
                 </div>
                 <div className="flex justify-center gap-4">
-                    <label htmlFor="sorttype" className="md:py-1">Sort</label>
+                    <label htmlFor="sorttype" className="md:py-1 hover:cursor-pointer caret-transparent">Sort</label>
                     <select name="sorttype" id="sorttype" value={fltdatavar.sorttype} onChange={handleChange}
-                            className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100">
+                            className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100 caret-transparent">
                         <option value="">None</option>
                         <option value="amount">Amount</option>
                         <option value="date">Date</option>
@@ -68,9 +68,9 @@ useEffect(()=>{
                 <div >
                  
                   <div className={`flex justify-center gap-4 ${fltdatavar.sorttype !== ""?"visible":"invisible"}`}>
-                    <label htmlFor="sortorder" className="md:py-1">Order</label>
+                    <label htmlFor="sortorder" className="md:py-1 hover:cursor-pointer caret-transparent">Order</label>
                     <select name="sortorder" id="sortorder" value={fltdatavar.sortorder} onChange={handleChange}
-                            className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100">
+                            className="border border-gray-400 rounded-lg px-1 md:py-1 hover:cursor-pointer hover:scale-105 transition-transform duration-100 caret-transparent">
                         <option value="ascending">Ascending</option>
                         <option value="descending">Descending</option>
                     </select>

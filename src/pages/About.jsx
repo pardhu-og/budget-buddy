@@ -2,7 +2,7 @@
 export default function About (){
 
     return (
-        <div className="flex flex-col space-y-6 m-1 mb-2 p-1
+        <div className="flex flex-col space-y-6 caret-transparent m-1 mb-2 p-1
                         md:space-y-8 md:m-2 md:mb-3 md:p-2
                         lg:space-y-9 lg:m-3 lg:mb-4 lg:p-3
                         ">
