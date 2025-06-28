@@ -1,5 +1,4 @@
 // Forum.jsx
-
 export default function Form ({submitFunction, inpvalidationState, setInpValidationState, Title}){
      
     
