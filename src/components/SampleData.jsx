@@ -155,15 +155,22 @@ const sample = [{
 export default function SampleData(){
     const {data, setData} =useData();
     const [samplestatus, setSampleStatus] = useState(JSON.parse(localStorage.getItem("samplestatus")) || "display")
-   
+    const [sampleanimation, setSampleAnimation] =useState(0)
     function inject(){
         setData(p=>[...p,...sample])
         setSampleStatus("nodisplay")
+        setSampleAnimation(1)
         localStorage.setItem("samplestatus",JSON.stringify("nodisplay"))
     }
 
 return (
-    <button title="Adds sample transactions to demonstrate the app" className={` animate-bounce hover:cursor-pointer ${samplestatus==="display"?"":"hidden"}`} onClick={inject}>Sample data</button>
+    <div>
+        <button title="Adds sample transactions to demonstrate the app" className={` animate-bounce hover:cursor-pointer ${samplestatus==="display"?"":"hidden"}`} onClick={inject}>Sample data</button>
+        <div className={`fixed top-0 left-1/2 translate-x-[-50%] translate-y-[-100%] w-40 h-10 md:h-15 bg-gray-200 flex justify-center items-center border rounded-xl text-green-700 text-sm md:text-base lg:text-lg font-bold opacity-0  ${sampleanimation!== 0?"animate-slidein":""} caret-transparent
+                            `} >
+                <p>Sample Data Injected</p>
+            </div>
+    </div>
 )
 }
 
