@@ -49,4 +49,4 @@ I'm a frontend developer focused on building responsive, clean, and functional w
 
 - 🔗 [LinkedIn](https://www.linkedin.com/in/pardhasaradhi-alaparthi-203786371)
 - 📝 [Blog](https://dialogue-with-machine-a-coders-journey.hashnode.dev/)
-- 🌐 Portfolio: *Coming Soon*
+- 🌐 [Portfolio](https://portfolio-site-pardhasaradhi-alaparthis-projects.vercel.app/)

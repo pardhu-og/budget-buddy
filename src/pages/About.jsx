@@ -38,7 +38,7 @@ export default function About (){
                     <li>🔗 Github Repo: <a href="https://github.com/pardhu-og/budget-buddy" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 underline">View</a></li>
                     <li>🔗 LinkedIn: <a href="https://www.linkedin.com/in/pardhasaradhi-alaparthi-203786371" target="_blank" rel="noopener noreferrer" className="font-semibold  text-blue-600 underline">View</a></li>
                     <li>🔗 Blog: <a href="https://dialogue-with-machine-a-coders-journey.hashnode.dev/" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 underline">View</a></li>
-                    <li>🔗 Portfolio Site: <a href="#" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 underline">View</a></li>
+                    <li>🔗 Portfolio Site: <a href="https://portfolio-site-pardhasaradhi-alaparthis-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 underline">View</a></li>
                 </ul>
             </section>
         </div>
